@@ -8,8 +8,8 @@ from .models import Student
 
 
 # Create your views here.
-def serial(request):
-    stu=Student.objects.get(id=1)
+def serial(request,pk):
+    stu=Student.objects.get(id=pk)
     complex_item=StudentSerializer(stu)
     json_data=JSONRenderer().render(complex_item.data)
 
