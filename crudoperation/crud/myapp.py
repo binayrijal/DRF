@@ -3,7 +3,7 @@ import json
 URL="http://127.0.0.1:8000/crudstart/"
 
 def getdata(id=None):
-    id={}
+    data={}
     if id is not None:
         data={'id':id}
         json_data=json.dumps(data)

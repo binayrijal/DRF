@@ -13,6 +13,7 @@ def view_student(request):
         stream=io.BytesIO(form_data)
         pythondata=JSONParser().parse(stream)
         id=pythondata.get('id',None)
+       
         if id is not None:
             stu=Student.objects.get(id=id)
             serializer=StudentSerialzer(stu)
