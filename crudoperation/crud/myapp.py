@@ -1,6 +1,6 @@
 import requests
 import json
-URL=""
+URL="http://127.0.0.1:8000/crudstart/"
 
 def getdata(id=None):
     id={}
