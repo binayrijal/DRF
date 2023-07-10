@@ -24,4 +24,15 @@ def postdata():
     r=requests.post(url=URL,data=json_data)
     data=r.json()
     print(data)
-postdata()
+#postdata()
+
+def putdata():
+    data={
+        'id':3,
+        'name':'binu',
+        'city':'kharibot'
+    }
+    json_data=json.dumps(data)
+    r=requests.put(url=URL,data=json_data)
+    data=r.json()
+    print(data)

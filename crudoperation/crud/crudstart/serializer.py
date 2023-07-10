@@ -10,3 +10,9 @@ class StudentSerializer(serializers.Serializer):
     
     def create(self, validated_data):
      return Student.objects.create(**validated_data)
+    def update(self, instance, validated_data):
+     instance.name=validated_data.get('name',instance.name)
+     instance.roll=validated_data.get('name',instance.roll)
+     instance.city=validated_data.get('name',instance.city)
+     instance.save()
+     return instance
