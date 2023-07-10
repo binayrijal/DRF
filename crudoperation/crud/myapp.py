@@ -36,3 +36,4 @@ def putdata():
     r=requests.put(url=URL,data=json_data)
     data=r.json()
     print(data)
+putdata()
