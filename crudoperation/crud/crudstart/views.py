@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 import io
 from .models import Student
 from rest_framework.renderers import JSONRenderer
-from .serializer import StudentSerialzer
+from .serializer import StudentSerializer
 from rest_framework.parsers import JSONParser
 from django.http import HttpResponse
 
@@ -16,10 +16,10 @@ def view_student(request):
        
         if id is not None:
             stu=Student.objects.get(id=id)
-            serializer=StudentSerialzer(stu)
+            serializer=StudentSerializer(stu)
             json_data=JSONRenderer().render(serializer.data)
             return HttpResponse(json_data,content_type='application/json')
         stu=Student.objects.all()
-        serializer=StudentSerialzer(stu,many=True)
+        serializer=StudentSerializer(stu,many=True)
         json_data=JSONRenderer().render(serializer.data)
         return HttpResponse(json_data,content_type='application/json')
