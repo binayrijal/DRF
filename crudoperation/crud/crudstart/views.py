@@ -23,3 +23,16 @@ def view_student(request):
         serializer=StudentSerializer(stu,many=True)
         json_data=JSONRenderer().render(serializer.data)
         return HttpResponse(json_data,content_type='application/json')
+    
+
+    if request.method=='POST':
+        form_data=request.body
+        stream=io.BytesIO(form_data)
+        pythondata=JSONParser().parse(stream)
+        serializer=StudentSerializer(data=pythondata)
+        if serializer.is_valid():
+            serializer.save()
+            res={'msg':'data is created'}
+            json_data=JSONRenderer().render(res)
+            return HttpResponse(json_data,content_type='application/json')
+        

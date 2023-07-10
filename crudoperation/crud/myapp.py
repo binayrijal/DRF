@@ -12,4 +12,15 @@ def getdata(id = None):
     data=r.json()
     print(data)
 
-getdata()
+#getdata()
+
+def postdata():
+    data={
+        'name':'bidu',
+        'roll':191512,
+        'city':'balkumari',
+    }
+    json_data=json.dumps(data)
+    r=requests.post(url=URL,data=json_data)
+    data=r.json()
+    print(data)
