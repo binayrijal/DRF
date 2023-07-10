@@ -58,4 +58,4 @@ def view_student(request):
             return HttpResponse(json_data,content_type='application/json')
         json_data=JSONRenderer().render(serializer.errors)
         return HttpResponse(json_data,content_type='application/json')
-            
+        

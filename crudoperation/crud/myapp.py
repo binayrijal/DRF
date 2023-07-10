@@ -37,4 +37,14 @@ def putdata():
     r=requests.put(url=URL,data=json_data)
     data=r.json()
     print(data)
-putdata()
+#putdata()
+
+def deletedata():
+    data={
+        'id':2
+    }
+    json_data=json.dumps(data)
+    r=requests.delete(url=URL,data=json_data)
+    data=r.json()
+    print(data)
+deletedata()
