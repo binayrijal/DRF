@@ -47,7 +47,10 @@ def view_student(request):
         pythondata=JSONParser().parse(stream)
         id=pythondata.get('id')
         stu=Student.objects.get(id=id)
-        serializer=StudentSerializer(stu,data=pythondata, partial=True)
+        #for partial update like if you want to data name and city only in this case then just below comment code in requird
+        #serializer=StudentSerializer(stu,data=pythondata, partial=True)
+        #for fully updated below code is required
+        serializer=StudentSerializer(stu,data=pythondata)
         if serializer.is_valid():
             serializer.save()
             res={'msg':'data is updated'}
