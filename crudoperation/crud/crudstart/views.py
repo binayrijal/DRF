@@ -68,4 +68,5 @@ def view_student(request):
         res={'msg':'data deleted successfully'}
         json_data=JSONRenderer().render(res)
         return HttpResponse(json_data,content_type='application/json')
+
         
