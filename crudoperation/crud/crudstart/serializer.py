@@ -2,9 +2,19 @@ from .models import Student
 from rest_framework import serializers
 
 
+def namestartwith_a(value):
+
+  if value[0].lower()!='a':
+    raise serializers.ValidationError('name  start with a')
+  return value
+
+ 
+      
+
+
 
 class StudentSerializer(serializers.Serializer):
-    name=serializers.CharField(max_length=100)
+    name=serializers.CharField(max_length=100,validators=[namestartwith_a])
     roll=serializers.IntegerField()
     city=serializers.CharField(max_length=100)
 
