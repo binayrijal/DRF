@@ -2,6 +2,7 @@ from .models import Student
 from rest_framework import serializers
 
 
+
 class StudentSerializer(serializers.Serializer):
     name=serializers.CharField(max_length=100)
     roll=serializers.IntegerField()
@@ -17,6 +18,7 @@ class StudentSerializer(serializers.Serializer):
      instance.city=validated_data.get('city',instance.city)
      instance.save()
      return instance
+    
     #field level validator
     def validate_roll(self,value):
       if value>=200:
@@ -24,6 +26,14 @@ class StudentSerializer(serializers.Serializer):
       return value
     
     #object validator
-    #def 
-      
+    def validate(self, data):
+      nm=data.get('name')
+      ct=data.get('city')
+      sut=Student.objects.all()
+      for student in sut:
+       dname=student.name.lower()
+       dcity=student.city.lower()
+       if nm.lower()==dname and ct.lower()== dcity :
+        raise serializers.ValidationError('both are already exists')
+      return data      
     

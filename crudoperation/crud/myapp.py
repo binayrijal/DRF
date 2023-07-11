@@ -17,7 +17,7 @@ def getdata(id = None):
 def postdata():
     data={
         'name':'bindu',
-        'roll':19190,
+        'roll':19,
         'city':'koteshwor',
     }
     json_data=json.dumps(data)
@@ -30,7 +30,7 @@ def putdata():
     data={
         'id':3,
         'name':'binu', 
-        'roll':191508, #for partial update we send only partial data in our case we send id,name and city roll is in this because i change code for fully update from previous partial update
+        'roll':19, #for partial update we send only partial data in our case we send id,name and city roll is in this because i change code for fully update from previous partial update
         'city':'kharibot'
     }
     json_data=json.dumps(data)
