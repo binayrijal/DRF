@@ -15,6 +15,8 @@ class StudentSerializer(serializers.ModelSerializer):
   class Meta:
     model=Student
     fields='__all__'
+    #read_only_fields=['name']
+    extra_kwargs={'name':{'read_only':True}}
 
     """class StudentSerializer(serializers.Serializer):
     name=serializers.CharField(max_length=100,validators=[namestartwith_a])
