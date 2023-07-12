@@ -12,7 +12,7 @@ def getdata(id = None):
     data=r.json()
     print(data)
 
-#getdata()
+getdata(10)
 
 def postdata():
     data={
@@ -24,13 +24,13 @@ def postdata():
     r=requests.post(url=URL,data=json_data)
     data=r.json()
     print(data)
-postdata()
+#postdata()
 
 def putdata():
     data={
-        'id':3,
-        'name':'binu', 
-        'roll':19, #for partial update we send only partial data in our case we send id,name and city roll is in this because i change code for fully update from previous partial update
+        'id':11,
+        'name':'atit', 
+        'roll':195, #for partial update we send only partial data in our case we send id,name and city roll is in this because i change code for fully update from previous partial update
         'city':'kharibot'
     }
     json_data=json.dumps(data)

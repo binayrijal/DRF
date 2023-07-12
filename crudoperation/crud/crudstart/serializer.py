@@ -2,18 +2,21 @@ from .models import Student
 from rest_framework import serializers
 
 
-def namestartwith_a(value):
+"""def namestartwith_a(value):
 
   if value[0].lower()!='a':
     raise serializers.ValidationError('name  start with a')
-  return value
+  return value"""
 
  
       
 
+class StudentSerializer(serializers.ModelSerializer):
+  class Meta:
+    model=Student
+    fields='__all__'
 
-
-class StudentSerializer(serializers.Serializer):
+    """class StudentSerializer(serializers.Serializer):
     name=serializers.CharField(max_length=100,validators=[namestartwith_a])
     roll=serializers.IntegerField()
     city=serializers.CharField(max_length=100)
@@ -27,10 +30,10 @@ class StudentSerializer(serializers.Serializer):
      instance.roll=validated_data.get('roll',instance.roll)
      instance.city=validated_data.get('city',instance.city)
      instance.save()
-     return instance
+     return instance"""
     
-    #field level validator
-    def validate_roll(self,value):
+    #field level validato
+    """def validate_roll(self,value):
       if value>=200:
         raise serializers.ValidationError('roll must be less than 200')
       return value
@@ -45,5 +48,5 @@ class StudentSerializer(serializers.Serializer):
        dcity=student.city.lower()
        if nm.lower()==dname and ct.lower()== dcity :
         raise serializers.ValidationError('both are already exists')
-      return data      
-    
+      return data"""      
+  
