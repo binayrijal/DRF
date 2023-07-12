@@ -2,20 +2,21 @@ from .models import Student
 from rest_framework import serializers
 
 
-"""def namestartwith_a(value):
+def namestartwith_a(value):
 
   if value[0].lower()!='a':
     raise serializers.ValidationError('name  start with a')
-  return value"""
+  return value
 
  
       
 
 class StudentSerializer(serializers.ModelSerializer):
+  name=serializers.CharField(validators=[namestartwith_a])
   class Meta:
     model=Student
     fields='__all__'
-    #read_only_fields=['name']
+    read_only_fields=['name']
     extra_kwargs={'name':{'read_only':True}}
 
     """class StudentSerializer(serializers.Serializer):
@@ -35,7 +36,7 @@ class StudentSerializer(serializers.ModelSerializer):
      return instance"""
     
     #field level validato
-    """def validate_roll(self,value):
+    def validate_roll(self,value):
       if value>=200:
         raise serializers.ValidationError('roll must be less than 200')
       return value
@@ -50,5 +51,5 @@ class StudentSerializer(serializers.ModelSerializer):
        dcity=student.city.lower()
        if nm.lower()==dname and ct.lower()== dcity :
         raise serializers.ValidationError('both are already exists')
-      return data"""      
+      return data      
   
