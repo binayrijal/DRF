@@ -20,11 +20,36 @@ def helloworld(request,pk=None):
     return Response(serializer.data)
 
   if request.method=="POST": 
-    print(request.data)
+    data=request.data
+    serializer=StudentSerializer(data=data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response({'msg':'data save'})
+    
     return Response({'msg':'this is post method','data':request.data})
+    
   if request.method=="PUT":
-    return Response({'msg':'hellow this is put'})
+
+    id=pk
+    stu=Student.objects.get(id=id)
+    serializer=StudentSerializer(stu,data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response({'msg':'put method completed'})
+
+    return Response({'msg':'hellow this is put without valid'})
+  
   if request.method=="PATCH":
-    return Response({'msg':'hellow this is patch'})
+    id=pk
+    stu=Student.objects.get(id=id)
+    serializer=StudentSerializer(stu,data=request.data,partial=True)
+    if serializer.is_valid():
+      serializer.save()
+      return Response({'msg':'patch method completed'})
+
+    return Response({'msg':'hellow this is patch without valid'})
   if request.method=="DELETE":
+    id=pk
+    stu=Student.objects.get(id=id)
+    stu.delete()
     return Response({'msg':'hellow this is delete'})
