@@ -42,3 +42,8 @@ class StudentAPI(APIView):
           serializer.save()
           return Response({'msg':'data update complete'})
        return Response(serializer.errors)
+    def delete(self,request,pk):
+       id=pk
+       stu=Student.objects.get(id=id)
+       stu.delete()
+       return Response({'msg':'delete successfully'})
