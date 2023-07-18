@@ -43,7 +43,11 @@ class StudentViewSet(viewsets.ViewSet):
             return Response({'msg':'partial data updated'})
         return Response(serializer.errors)
     
-
+    def delete(self,request,pk=None):
+        id=pk
+        stu=Student.objects.get(id=id)
+        stu.delete()
+        return Response({'msg':'delete successfully'})
     
         
 
