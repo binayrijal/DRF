@@ -14,10 +14,20 @@ class StudentViewSet(viewsets.ViewSet):
         return Response(serializer.data)
     
     def create(self,request):
-        data=request.data
-        serializer=StudentSerializer(data=data)
+        
+        serializer=StudentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response({'msg':'obj created succesfully'})
-        return Response(serializer.errors,status=HTTP_204_NO_CONTENT)
+        return Response(serializer.errors)
+
+    def retrieve(self,request,pk=None):
+        id=pk
+        stu=Student.objects.get(id=id)
+        serializer=StudentSerializer(stu)
+        return Response(serializer.data)
+
+    
+        
+
         
