@@ -7,3 +7,7 @@ from .serializer import StudentSerializer
 class StudentModelViewSet(viewsets.ModelViewSet):
     queryset=Student.objects.all()
     serializer_class=StudentSerializer
+    
+class StudentReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset=Student.objects.all()
+    serializer_class=StudentSerializer
