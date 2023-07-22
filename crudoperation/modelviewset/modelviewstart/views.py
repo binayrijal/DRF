@@ -2,8 +2,8 @@ from django.shortcuts import render
 from .models import Student
 from rest_framework import viewsets
 from .serializer import StudentSerializer
-from rest_framework.authentication import BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import BasicAuthentication,SessionAuthentication
+from rest_framework.permissions import IsAuthenticated,IsAdminUser,IsAuthenticatedOrReadOnly
 
 # Create your views here.
 class StudentModelViewSet(viewsets.ModelViewSet):
@@ -16,9 +16,12 @@ class StudentModelViewSet(viewsets.ModelViewSet):
     'DEFAULT_PERMISSION_CLASSES':['rest_framework.permissions.IsAuthenticated'],
      } in setting.py """
     
-    
     #authentication_classes=[BasicAuthentication]
     #permission_classes=[IsAuthenticated]
+    authentication_classes=[SessionAuthentication]
+    #permission_classes=[IsAuthenticated]
+    permission_classes=[IsAdminUser]
+    #permission_classes=[IsAuthenticatedOrReadOnly]
 
 class StudentReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset=Student.objects.all()

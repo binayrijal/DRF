@@ -3,7 +3,6 @@ from .models import Student
 from .serializer import StudentSerializer
 from rest_framework.generics import GenericAPIView,ListCreateAPIView,RetrieveUpdateDestroyAPIView
 from rest_framework.mixins import ListModelMixin,CreateModelMixin,RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin
-
 # Create your views here.
 class StudentGETPOSTAPI(GenericAPIView,ListModelMixin,CreateModelMixin):
     queryset=Student.objects.all()
@@ -26,7 +25,6 @@ class StudentUPDATEDELETE(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,Des
     
 
 #alternate: implement crud operation just in two function with in max 5 line of code 
-
 
 class StudentGETPOSTAPI(ListCreateAPIView):
     queryset=Student.objects.all()
