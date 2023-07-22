@@ -15,9 +15,12 @@ class StudentModelViewSet(viewsets.ModelViewSet):
     'DEFAULT_AUTHENTICATION_CLASSES':['rest_framework.authentication.BasicAuthentication'],
     'DEFAULT_PERMISSION_CLASSES':['rest_framework.permissions.IsAuthenticated'],
      } in setting.py """
-    
+    #this is basic authetication
+
     #authentication_classes=[BasicAuthentication]
     #permission_classes=[IsAuthenticated]
+
+    #this is session authentication
     authentication_classes=[SessionAuthentication]
     #permission_classes=[IsAuthenticated]
     permission_classes=[IsAdminUser]
