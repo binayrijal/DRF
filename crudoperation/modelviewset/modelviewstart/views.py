@@ -3,7 +3,7 @@ from .models import Student
 from rest_framework import viewsets
 from .serializer import StudentSerializer
 from rest_framework.authentication import BasicAuthentication,SessionAuthentication
-from rest_framework.permissions import IsAuthenticated,IsAdminUser,IsAuthenticatedOrReadOnly,DjangoModelPermissions
+from rest_framework.permissions import IsAuthenticated,IsAdminUser,IsAuthenticatedOrReadOnly,DjangoModelPermissions,DjangoModelPermissionsOrAnonReadOnly
 
 # Create your views here.
 class StudentModelViewSet(viewsets.ModelViewSet):
@@ -25,7 +25,8 @@ class StudentModelViewSet(viewsets.ModelViewSet):
     #permission_classes=[IsAuthenticated]
     #permission_classes=[IsAdminUser]
     #permission_classes=[IsAuthenticatedOrReadOnly]
-    permission_classes=[DjangoModelPermissions]
+    #permission_classes=[DjangoModelPermissions]
+    permission_classes=[DjangoModelPermissionsOrAnonReadOnly]
 
 class StudentReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     queryset=Student.objects.all()
