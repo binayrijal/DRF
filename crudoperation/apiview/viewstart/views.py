@@ -1,13 +1,17 @@
 from django.shortcuts import render
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,authentication_classes,permission_classes
 from rest_framework.response import Response
 from .serializer import StudentSerializer
 from .models import Student
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 
 # Create your views here.
 @api_view(['GET','POST','PUT','PATCH','DELETE'])
+@permission_classes([IsAuthenticated])
+@authentication_classes([BasicAuthentication])
 def helloworld(request,pk=None):
   if request.method=="GET":
     id=pk
