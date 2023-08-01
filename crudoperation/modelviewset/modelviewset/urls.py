@@ -18,6 +18,7 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('modelviewstart.urls'))
+    path('',include('modelviewstart.urls')),
+    path('auth/',include('rest_framework.urls'))
 ]
 
