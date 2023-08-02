@@ -5,6 +5,7 @@ from .serializer import StudentSerializer
 from rest_framework.authentication import BasicAuthentication,SessionAuthentication
 from rest_framework.permissions import IsAuthenticated,IsAdminUser,IsAuthenticatedOrReadOnly,DjangoModelPermissions,DjangoModelPermissionsOrAnonReadOnly
 from modelviewstart.customauth import CustomAuth
+
 # Create your views here.
 class StudentModelViewSet(viewsets.ModelViewSet):
     queryset=Student.objects.all()
