@@ -4,7 +4,7 @@ from rest_framework import viewsets
 from .serializer import StudentSerializer
 from rest_framework.authentication import BasicAuthentication,SessionAuthentication
 from rest_framework.permissions import IsAuthenticated,IsAdminUser,IsAuthenticatedOrReadOnly,DjangoModelPermissions,DjangoModelPermissionsOrAnonReadOnly
-
+from modelviewstart.customauth import CustomAuth
 # Create your views here.
 class StudentModelViewSet(viewsets.ModelViewSet):
     queryset=Student.objects.all()
@@ -28,6 +28,8 @@ class StudentModelViewSet(viewsets.ModelViewSet):
     #permission_classes=[DjangoModelPermissions]
     permission_classes=[DjangoModelPermissionsOrAnonReadOnly]
 
-class StudentReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+class StudentReadOnlyViewSet(viewsets.ModelViewSet):
     queryset=Student.objects.all()
     serializer_class=StudentSerializer
+    authentication_classes=[CustomAuth]
+    permission_classes=[IsAuthenticated]
