@@ -36,4 +36,5 @@ class StudentReadOnlyViewSet(viewsets.ModelViewSet):
     serializer_class=StudentSerializer
     authentication_classes=[SessionAuthentication]
     permission_classes=[IsAuthenticatedOrReadOnly]
+    #this is for how many times you want to access api 
     throttle_classes=[AnonRateThrottle,UserRateThrottle]
