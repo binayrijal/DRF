@@ -36,5 +36,13 @@ class StudentReadOnlyViewSet(viewsets.ModelViewSet):
     serializer_class=StudentSerializer
     authentication_classes=[SessionAuthentication]
     permission_classes=[IsAuthenticatedOrReadOnly]
+
     #this is for how many times you want to access api 
     throttle_classes=[AnonRateThrottle,UserRateThrottle]
+
+class Studentfilter(viewsets.ModelViewSet):
+    queryset=Student.objects.all()
+    serializer_class=StudentSerializer
+    def get_queryset(self):
+        user=self.request.user
+        return Student.objects.filter(user)
