@@ -6,7 +6,9 @@ from rest_framework.authentication import BasicAuthentication,SessionAuthenticat
 from rest_framework.permissions import IsAuthenticated,IsAdminUser,IsAuthenticatedOrReadOnly,DjangoModelPermissions,DjangoModelPermissionsOrAnonReadOnly
 from modelviewstart.customauth import CustomAuth
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.throttling import AnonRateThrottle,UserRateThrottle
+from rest_framework.throttling import AnonRateThrottle,UserRateThrottle 
+from django_filters.rest_framework import DjangoFilterBackend
+
 
 # Create your views here.
 class StudentModelViewSet(viewsets.ModelViewSet):
@@ -43,6 +45,9 @@ class StudentReadOnlyViewSet(viewsets.ModelViewSet):
 class Studentfilter(viewsets.ModelViewSet):
     queryset=Student.objects.all()
     serializer_class=StudentSerializer
-    def get_queryset(self):
-        user=self.request.user
-        return Student.objects.filter(user)
+    #def get_queryset(self):
+     #   user=self.request.user
+       # return Student.objects.filter(user)
+    filter_backends=[DjangoFilterBackend]
+    filterset_Field=['city']
+    
