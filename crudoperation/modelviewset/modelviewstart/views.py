@@ -8,7 +8,7 @@ from modelviewstart.customauth import CustomAuth
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.throttling import AnonRateThrottle,UserRateThrottle 
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter
+from rest_framework.filters import SearchFilter,OrderingFilter
 
 
 # Create your views here.
@@ -55,8 +55,11 @@ class Studentfilter(viewsets.ModelViewSet):
     #filter_backends=[DjangoFilterBackend]
     #filterset_Field=['city']
     #class searchfilter!!!!
-    filter_backends=[SearchFilter]
+    #filter_backends=[SearchFilter]
     #search_fields=['city']
     #search_fields=['^city']
     #search_fields=['=name']
+    filter_backends=[OrderingFilter]
+    order_field=['name']
+
     
