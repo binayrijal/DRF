@@ -8,6 +8,7 @@ from modelviewstart.customauth import CustomAuth
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.throttling import AnonRateThrottle,UserRateThrottle 
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter
 
 
 # Create your views here.
@@ -45,9 +46,16 @@ class StudentReadOnlyViewSet(viewsets.ModelViewSet):
 class Studentfilter(viewsets.ModelViewSet):
     queryset=Student.objects.all()
     serializer_class=StudentSerializer
+    #!!!function base filters!!!
+
     #def get_queryset(self):
      #   user=self.request.user
        # return Student.objects.filter(user)
-    filter_backends=[DjangoFilterBackend]
-    filterset_Field=['city']
+    # !!!class base filters!!!
+    #filter_backends=[DjangoFilterBackend]
+    #filterset_Field=['city']
+    #class searchfilter!!!!
+    filter_backends=[SearchFilter]
+    search_fields=['city']
+
     
