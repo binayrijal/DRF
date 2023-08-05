@@ -56,6 +56,7 @@ class Studentfilter(viewsets.ModelViewSet):
     #filterset_Field=['city']
     #class searchfilter!!!!
     filter_backends=[SearchFilter]
-    search_fields=['city']
-
+    #search_fields=['city']
+    #search_fields=['^city']
+    #search_fields=['=name']
     
