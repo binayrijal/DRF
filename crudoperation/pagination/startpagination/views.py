@@ -10,5 +10,5 @@ from .mypagination import MyPageNumberPagination
 class StudentList(ListAPIView):
     queryset=Student.objects.all()
     serializer_class=StudentSerializer
-    pagination_class=[MyPageNumberPagination]
+    pagination_class=MyPageNumberPagination
     
