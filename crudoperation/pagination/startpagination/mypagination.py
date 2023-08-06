@@ -6,3 +6,4 @@ class Mylimitoffsetpagination(LimitOffsetPagination):
     default_limit=5
     limit_query_param='binaylimit'
     offset_query_param='binayoffset'
+    max_limit=5
